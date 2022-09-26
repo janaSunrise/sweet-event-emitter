@@ -94,4 +94,29 @@ describe('EventEmitter', () => {
     expect(listener).toHaveBeenCalledWith('foo', 'bar');
     expect(listener).toHaveBeenCalledTimes(1);
   });
+
+  it('should remove all listeners', () => {
+    const listener1 = vi.fn();
+    const listener2 = vi.fn();
+
+    eventEmitter.on('test', listener1);
+    eventEmitter.on('test', listener2);
+
+    eventEmitter.removeAllListeners('test');
+
+    eventEmitter.emit('test');
+
+    expect(listener1).not.toHaveBeenCalled();
+    expect(listener2).not.toHaveBeenCalled();
+  });
+
+  it('should get all listeners', () => {
+    const listener1 = vi.fn();
+    const listener2 = vi.fn();
+
+    eventEmitter.on('test', listener1);
+    eventEmitter.on('test', listener2);
+
+    expect(eventEmitter.listeners('test')).toEqual([listener1, listener2]);
+  });
 });
