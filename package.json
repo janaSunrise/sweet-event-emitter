@@ -1,0 +1,37 @@
+{
+  "name": "simple-event-emitter",
+  "version": "0.1.0",
+  "description": "Simple event emitter for Javascript",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write ./**/*.{ts,tsx,json,md}",
+    "prepare": "husky install",
+    "prepublishOnly": "yarn run build"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "tsup": "^6.2.3",
+    "typescript": "^4.8.3"
+  },
+  "keywords": [],
+  "author": "Sunrit Jana",
+  "license": "MIT",
+  "homepage": "https://github.com/janaSunrise/simple-event-emitter",
+  "bugs": {
+    "url": "https://github.com/janaSunrise/simple-event-emitter/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janaSunrise/simple-event-emitter.git"
+  }
+}
