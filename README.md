@@ -1,3 +1,3 @@
-# Simple event emitter
+# Sweet event emitter
 
 Simple event emitter for Javascript

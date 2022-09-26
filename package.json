@@ -1,5 +1,5 @@
 {
-  "name": "simple-event-emitter",
+  "name": "sweet-event-emitter",
   "version": "0.1.0",
   "description": "Simple event emitter for Javascript",
   "main": "dist/index.js",
@@ -28,12 +28,12 @@
   "keywords": [],
   "author": "Sunrit Jana",
   "license": "MIT",
-  "homepage": "https://github.com/janaSunrise/simple-event-emitter",
+  "homepage": "https://github.com/janaSunrise/sweet-event-emitter",
   "bugs": {
-    "url": "https://github.com/janaSunrise/simple-event-emitter/issues"
+    "url": "https://github.com/janaSunrise/sweet-event-emitter/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/janaSunrise/simple-event-emitter.git"
+    "url": "git+https://github.com/janaSunrise/sweet-event-emitter.git"
   }
 }
