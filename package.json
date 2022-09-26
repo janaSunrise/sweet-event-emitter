@@ -12,6 +12,7 @@
     "build": "tsup",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write ./**/*.{ts,tsx,json,md}",
+    "test": "vitest --run",
     "prepare": "husky install",
     "prepublishOnly": "yarn run build"
   },
@@ -21,7 +22,8 @@
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "tsup": "^6.2.3",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.3",
+    "vitest": "^0.23.4"
   },
   "keywords": [],
   "author": "Sunrit Jana",
