@@ -11,7 +11,7 @@
   "scripts": {
     "build": "tsup",
     "typecheck": "tsc --noEmit",
-    "format": "prettier --write ./**/*.{ts,tsx,json,md}",
+    "format": "prettier --write ./**/*.{ts,json,md}",
     "test": "vitest --run",
     "prepare": "husky install",
     "prepublishOnly": "yarn run build"

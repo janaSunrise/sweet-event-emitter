@@ -1,9 +1,10 @@
 export class EventEmitter {
   public events: Map<string, Set<Function>>;
-  public errorListener: Function | null = null;
+  public errorListener: Function | null;
 
   constructor() {
     this.events = new Map();
+    this.errorListener = null;
   }
 
   private get(event: string) {
