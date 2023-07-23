@@ -1,5 +1,6 @@
 export class EventEmitter {
   public events: Map<string, Set<Function>>;
+  public errorListener: Function | null = null;
 
   constructor() {
     this.events = new Map();
@@ -27,12 +28,6 @@ export class EventEmitter {
     this.get(event)?.delete(listener);
   }
 
-  public emit(event: string, ...args: any[]) {
-    if (!this.events.has(event)) return;
-
-    this.get(event)?.forEach(listener => listener(...args));
-  }
-
   public once(event: string, listener: Function) {
     const wrapper = (...args: any[]) => {
       listener(...args);
@@ -42,9 +37,26 @@ export class EventEmitter {
     this.on(event, wrapper);
   }
 
+  public emit(event: string, ...args: any[]) {
+    if (!this.events.has(event)) return;
+
+    this.get(event)?.forEach(listener => {
+      try {
+        listener(...args);
+      } catch (err) {
+        if (this.errorListener) this.errorListener(err);
+      }
+    });
+  }
+
   public removeAllListeners(event: string) {
     if (!this.events.has(event)) return;
 
     this.get(event)?.clear();
+  }
+
+  // Register listener to run on error
+  public onError(listener: Function) {
+    this.errorListener = listener;
   }
 }

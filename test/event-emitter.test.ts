@@ -119,4 +119,24 @@ describe('EventEmitter', () => {
 
     expect(eventEmitter.listeners('test')).toEqual([listener1, listener2]);
   });
+
+  it('should call error listener on error', () => {
+    const listener = vi.fn();
+    const errorListener = vi.fn((_err: Error) => {});
+
+    eventEmitter.on('test', listener);
+    eventEmitter.onError(errorListener);
+
+    eventEmitter.emit('test');
+
+    expect(errorListener).not.toHaveBeenCalled();
+
+    listener.mockImplementation(() => {
+      throw new Error('test');
+    });
+
+    eventEmitter.emit('test');
+
+    expect(errorListener).toHaveBeenCalledTimes(1);
+  });
 });
