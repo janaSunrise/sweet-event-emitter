@@ -5,28 +5,32 @@ export class EventEmitter {
     this.events = new Map();
   }
 
+  private get(event: string) {
+    return this.events.get(event);
+  }
+
   public listeners(event: string) {
     if (!this.events.has(event)) return [];
 
-    return [...this.events.get(event)!];
+    return [...this.get(event)!];
   }
 
   public on(event: string, listener: Function) {
     if (!this.events.has(event)) this.events.set(event, new Set());
 
-    this.events.get(event)?.add(listener);
+    this.get(event)?.add(listener);
   }
 
   public off(event: string, listener: Function) {
     if (!this.events.has(event)) return;
 
-    this.events.get(event)?.delete(listener);
+    this.get(event)?.delete(listener);
   }
 
   public emit(event: string, ...args: any[]) {
     if (!this.events.has(event)) return;
 
-    this.events.get(event)?.forEach(listener => listener(...args));
+    this.get(event)?.forEach(listener => listener(...args));
   }
 
   public once(event: string, listener: Function) {
@@ -41,6 +45,6 @@ export class EventEmitter {
   public removeAllListeners(event: string) {
     if (!this.events.has(event)) return;
 
-    this.events.get(event)?.clear();
+    this.get(event)?.clear();
   }
 }
